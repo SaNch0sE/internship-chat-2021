@@ -1,0 +1,48 @@
+{
+    "name": "intership-template",
+    "version": "1.0.0",
+    "description": "```     https://hapi.dev/family/joi/ ```",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/server/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ChechaValerii/intership-template.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ChechaValerii/intership-template/issues"
+    },
+    "homepage": "https://github.com/ChechaValerii/intership-template#readme",
+    "dependencies": {
+        "bcrypt": "5.0.1",
+        "compression": "1.7.4",
+        "cookie-parser": "1.4.6",
+        "cors": "2.8.5",
+        "csvtojson": "2.0.10",
+        "dotenv": "10.0.0",
+        "ejs": "3.1.6",
+        "express": "4.17.1",
+        "helmet": "4.6.0",
+        "joi": "17.5.0",
+        "jsonwebtoken": "8.5.1",
+        "mongoose": "6.0.14",
+        "migrate-mongo": "8.2.3",
+        "nodemailer": "6.7.2"
+    },
+    "devDependencies": {
+        "cz-conventional-changelog": "3.3.0",
+        "eslint": "^8.3.0",
+        "eslint-config-airbnb-base": "15.0.0",
+        "eslint-plugin-import": "2.25.3",
+        "nodemon": "2.0.15"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}
