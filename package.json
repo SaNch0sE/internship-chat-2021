@@ -1,7 +1,7 @@
 {
     "name": "intership-template",
     "version": "1.0.0",
-    "description": "```     https://hapi.dev/family/joi/ ```",
+    "description": "Onix Internship 2021 chat",
     "main": "index.js",
     "scripts": {
         "start": "node src/server/index.js",
