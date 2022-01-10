@@ -28,11 +28,6 @@ const UserSchema = new Schema(
             default: 'User',
             required: true,
         },
-        lastVisitBooks: {
-            type: Date,
-            default: Date.now,
-            required: true,
-        },
     },
     {
         collection: 'users',

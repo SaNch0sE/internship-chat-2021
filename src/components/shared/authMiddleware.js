@@ -15,6 +15,8 @@ function checkToken(token) {
 
 /**
  * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
  * @returns {void}
  */
 const authMiddleware = (req, res, next) => {
@@ -22,7 +24,23 @@ const authMiddleware = (req, res, next) => {
     next();
 };
 
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ * @returns {void}
+ */
+const graphicAuthMiddleware = (req, res, next) => {
+    try {
+        req.user = checkToken(req.cookies.accessToken);
+        next();
+    } catch (error) {
+        
+    }
+};
+
 module.exports = {
     authMiddleware,
     checkToken,
+    graphicAuthMiddleware,
 };
