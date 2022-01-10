@@ -20,14 +20,4 @@ const router = Router();
  */
 router.get('/', errorHandler(ChatComponent.mainChat));
 
-/**
- * Route for rendering main chat page.
- * @name /v1/chat/:templateName
- * @function
- * @inner
- * @param {string} path - Express path
- * @param {callback} middleware - Express middleware.
- */
-router.get('/:templateName', errorHandler(ChatComponent.loadTemplate));
-
 module.exports = router;

@@ -28,6 +28,16 @@ const UserSchema = new Schema(
             default: 'User',
             required: true,
         },
+        socketId: {
+            type: String,
+            default: '',
+            required: true,
+        },
+        online: {
+            type: Boolean,
+            default: false,
+            required: true,
+        },
     },
     {
         collection: 'users',

@@ -34,7 +34,6 @@ module.exports = {
                     'default-src': [
                         "'self'",
                         'https://cors-anywhere.herokuapp.com',
-                        'https://kagonekoshiro.com',
                     ],
                     'base-uri': "'self'",
                     'font-src': [
@@ -48,7 +47,6 @@ module.exports = {
                     'img-src': [
                         "'self'",
                         'https://s3-us-west-2.amazonaws.com',
-                        'https://kagonekoshiro.com',
                         'data:',
                     ],
                     'object-src': [
