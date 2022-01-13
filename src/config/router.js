@@ -50,7 +50,11 @@ module.exports = {
          * @param {callback} middleware - Express middleware.
          */
         app.use((req, res) => {
-            res.status(404).json({
+            if (req.path.includes('/v1/chat')) {
+                return res.status(404).render('404');
+            }
+
+            return res.status(404).json({
                 error: 'Not Found',
             });
         });

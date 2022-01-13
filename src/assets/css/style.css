@@ -25,6 +25,14 @@ ul li {
     border-radius: 5px;
 }
 
+#logout {
+    display: block;
+    width: 50px;
+    position: relative;
+    margin: 5px;
+    float: left;
+}
+
 .people-list {
     width: 260px;
     float: left;

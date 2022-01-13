@@ -1,0 +1,11 @@
+<%- include('baseHead', { data: { title: "Login" }, }); %>
+
+    <label for="password">Enter email</label><br>
+    <input name="email" type="text" id="email" value="<%= user.email %>"><br>
+    <label for="password">Enter password</label><br>
+    <input name="password" type="password" id="password"><br>
+    <button id="signIn">Submit</button>
+
+    <script src="/assets/js/login.js"></script>
+
+    <%- include('baseBottom'); %>

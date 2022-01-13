@@ -35,6 +35,14 @@ function findById(id) {
     return UserModel.findById(id).lean();
 }
 
+function getActiveUsers() {
+    return UserModel.find({ online: true }, {
+        email: 0,
+        password: 0,
+        role: 0,
+    }).lean();
+}
+
 /**
  * @exports
  * @method create
@@ -57,13 +65,13 @@ function create(profile) {
  * Find a user by id and update his profile
  * @exports
  * @method updateById
- * @param {string} _id
- * @param {object} newProfile
+ * @param {string} socketId
+ * @param {boolead} online
  * @summary update a user's profile
  * @returns {Promise<{}>}
  */
-function updateVisitBooks(_id) {
-    return UserModel.updateOne({ _id }, { lastVisitBooks: Date.now() }).lean();
+function updateOnline(socketId, online) {
+    return UserModel.updateOne({ socketId }, { online }).lean();
 }
 
 /**
@@ -94,7 +102,8 @@ module.exports = {
     findAll,
     findById,
     findOne,
-    updateVisitBooks,
+    getActiveUsers,
+    updateOnline,
     create,
     updateById,
     deleteById,

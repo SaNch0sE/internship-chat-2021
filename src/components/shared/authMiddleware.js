@@ -20,27 +20,18 @@ function checkToken(token) {
  * @returns {void}
  */
 const authMiddleware = (req, res, next) => {
-    req.user = checkToken(req.cookies.accessToken);
-    next();
-};
-
-/**
- * @param {express.Request} req
- * @param {express.Response} res
- * @param {express.NextFunction} next
- * @returns {void}
- */
-const graphicAuthMiddleware = (req, res, next) => {
     try {
         req.user = checkToken(req.cookies.accessToken);
         next();
-    } catch (error) {
-        
+    } catch (e) {
+        if (!req.baseUrl.includes('/v1/chat')) {
+            throw e;
+        }
+        res.redirect('/v1/chat/login');
     }
 };
 
 module.exports = {
     authMiddleware,
     checkToken,
-    graphicAuthMiddleware,
 };

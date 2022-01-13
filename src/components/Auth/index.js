@@ -112,8 +112,7 @@ async function signIn(req, res) {
 
     const tokens = await AuthService.signIn(value);
 
-    res.cookie('accessToken', tokens.accessToken, { maxAge: config.accessAge });
-    res.cookie('refreshToken', tokens.refreshToken, { maxAge: config.refreshAge });
+    res.cookie('refreshToken', tokens.refreshToken, { maxAge: config.refreshAge * 1000 });
 
     return res.status(200).json({
         data: tokens,
@@ -144,7 +143,6 @@ async function refreshToken(req, res) {
         token: newTokens.refreshToken,
     });
 
-    res.cookie('accessToken', newTokens.accessToken, { maxAge: config.accessAge });
     res.cookie('refreshToken', newTokens.refreshToken, { maxAge: config.refreshAge });
 
     return res.status(200).json({

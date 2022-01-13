@@ -30,6 +30,7 @@ function genTokens(payload) {
     const data = {
         id: payload.id || payload._id,
         email: payload.email,
+        fullName: payload.fullName,
         role: payload.role,
     };
 
@@ -118,7 +119,7 @@ async function sendResetMail(profile) {
  * @returns {Promise<AuthModel>}
  */
 function updateToken(profile) {
-    return AuthModel.updateOne({ userId: profile.id }, profile).lean();
+    return AuthModel.updateOne({ userId: profile.userId }, { token: profile.token }).lean();
 }
 
 /**
@@ -161,7 +162,9 @@ async function saveToken(profile) {
         return tokens;
     } catch (err) {
         if (err.code === 11000) {
-            return AuthModel.updateOne({ userId: profile.id }, profile).lean();
+            const updated = await updateToken(profile);
+
+            return updated;
         }
         throw err;
     }
@@ -182,11 +185,13 @@ async function signIn(profile) {
     const tokens = {
         accessToken: jwt.sign({
             id: user._id,
+            fullName: user.fullName,
             email: user.email,
             role: user.role,
         }, process.env.SECRET, { expiresIn: config.accessAge }),
         refreshToken: jwt.sign({
             id: user._id,
+            fullName: user.fullName,
             email: user.email,
             role: user.role,
         }, process.env.SECRET, { expiresIn: config.refreshAge }),

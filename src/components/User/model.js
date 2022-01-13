@@ -31,12 +31,10 @@ const UserSchema = new Schema(
         socketId: {
             type: String,
             default: '',
-            required: true,
         },
         online: {
             type: Boolean,
             default: false,
-            required: true,
         },
     },
     {

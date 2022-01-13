@@ -15,7 +15,3 @@ events.init(
 );
 
 SocketServer.init(io);
-
-module.exports = {
-    io,
-};
